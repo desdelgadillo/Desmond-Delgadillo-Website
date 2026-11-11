@@ -1,0 +1,943 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Desmond Delgadillo — Accessibility Consultant and Assistive Technology Trainer in the Los Angeles area. WCAG and Section 508 audits, screen-reader testing with JAWS, NVDA, and VoiceOver, and assistive technology training for individuals and teams." />
+    <link rel="icon" href="data:," />
+    <title>Desmond Delgadillo — Assistive Technology Trainer &amp; AT Graduate Student</title>
+    <style>
+      :root {
+        --bg: #ffffff;
+        --bg-alt: #edf3f1;
+        --surface: #ffffff;
+        --ink: #13211f;
+        --ink-soft: #364843;
+        --accent: #0a4a56;
+        --accent-strong: #06333c;
+        --accent-ink: #ffffff;
+        --ochre: #7c5200;
+        --ochre-bright: #c98a12;
+        --line: #b7c8c2;
+        --focus: #b35400;
+        --tag-bg: #dcebe6;
+        --tag-ink: #07333d;
+        --hero-bg: #08333d;
+        --hero-ink: #ffffff;
+        --hero-soft: #d3e7e4;
+        --hero-accent: #f2b64f;
+        --card-shadow: 0 1px 2px rgba(8, 51, 61, 0.07), 0 8px 24px rgba(8, 51, 61, 0.07);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0c1a1d;
+          --bg-alt: #12262b;
+          --surface: #13262c;
+          --ink: #f0f6f3;
+          --ink-soft: #c2d4cd;
+          --accent: #8ed0de;
+          --accent-strong: #b5e3ee;
+          --accent-ink: #0c1a1d;
+          --ochre: #e8b85a;
+          --ochre-bright: #e8b85a;
+          --line: #3d5a60;
+          --focus: #ffb35c;
+          --tag-bg: #1e3a41;
+          --tag-ink: #d6eef3;
+          --hero-bg: #06191f;
+          --hero-ink: #ffffff;
+          --hero-soft: #c8e2de;
+          --hero-accent: #f2b64f;
+          --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+      }
+
+      * { box-sizing: border-box; }
+
+      html { scroll-behavior: smooth; }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-size: 1.0625rem;
+        line-height: 1.65;
+      }
+
+      h1, h2, h3 {
+        font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+        line-height: 1.15;
+        font-weight: 700;
+        color: var(--ink);
+      }
+      h1 { font-size: clamp(2.6rem, 6.5vw, 4.2rem); margin: 0 0 0.75rem; letter-spacing: -0.015em; }
+      h2 { font-size: clamp(1.7rem, 3.5vw, 2.3rem); margin: 0 0 0.6rem; }
+      section.block h2::before,
+      .contact-heading-rule {
+        content: "";
+        display: block;
+        width: 3rem;
+        height: 0.3rem;
+        border-radius: 999px;
+        background: var(--ochre-bright);
+        margin-bottom: 0.85rem;
+      }
+      h3 { font-size: 1.3rem; margin: 0 0 0.5rem; }
+      p { margin: 0 0 1rem; }
+      ul, ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+      li { margin-bottom: 0.35rem; }
+
+      a { color: var(--accent); text-decoration: underline; text-underline-offset: 0.18em; text-decoration-thickness: 0.08em; }
+      a:hover { color: var(--accent-strong); }
+
+      :focus-visible {
+        outline: 3px solid var(--focus);
+        outline-offset: 3px;
+        border-radius: 2px;
+      }
+      .hero-band :focus-visible,
+      .contact-box :focus-visible { outline-color: #ffb35c; }
+      .contact-box .linkedin-icon path { fill: #ffffff; }
+
+      .skip-link {
+        position: absolute;
+        left: 1rem;
+        top: -4rem;
+        z-index: 100;
+        background: var(--accent);
+        color: var(--accent-ink);
+        padding: 0.75rem 1.25rem;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 0 0 6px 6px;
+      }
+      .skip-link:focus { top: 0; color: var(--accent-ink); }
+
+      .wrap { max-width: 70rem; margin: 0 auto; padding: 0 1.25rem; }
+      @media (min-width: 48rem) { .wrap { padding: 0 2rem; } }
+
+      /* Header / nav */
+      .site-header {
+        border-bottom: 4px solid var(--ochre-bright);
+        background: var(--bg);
+      }
+      .header-inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem 2rem;
+        padding-top: 0.9rem;
+        padding-bottom: 0.9rem;
+      }
+      .site-name {
+        font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+        font-weight: 700; font-size: 1.2rem; color: var(--ink); text-decoration: none;
+      }
+      .site-name:hover { color: var(--accent); text-decoration: underline; }
+      nav.primary { margin-left: auto; }
+      nav.primary ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem 0.5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      nav.primary li { margin: 0; }
+      nav.primary a {
+        font-weight: 600;
+        padding: 0.45rem 0.8rem;
+        display: inline-block;
+        border-radius: 999px;
+        text-decoration: none;
+      }
+      nav.primary a:hover { background: var(--bg-alt); color: var(--accent-strong); text-decoration: underline; }
+
+      /* Hero — deep teal band with a subtle dot texture and a gold rule */
+      .hero-band {
+        background-color: var(--hero-bg);
+        background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1.5px, transparent 1.6px);
+        background-size: 26px 26px;
+        color: var(--hero-ink);
+      }
+      .hero { padding: 3.5rem 0 3.25rem; }
+      @media (min-width: 48rem) { .hero { padding: 5rem 0 4.25rem; } }
+      .hero h1 { color: var(--hero-ink); }
+      .hero h1::after {
+        content: "";
+        display: block;
+        width: 5.5rem;
+        height: 0.35rem;
+        border-radius: 999px;
+        background: var(--hero-accent);
+        margin-top: 1.1rem;
+      }
+      .hero-role {
+        font-size: clamp(1.25rem, 2.8vw, 1.6rem);
+        font-weight: 700;
+        color: var(--hero-accent);
+        margin: 0 0 1.25rem;
+      }
+      .hero-lede { font-size: 1.22rem; max-width: 44rem; color: var(--hero-ink); }
+      .hero-meta { color: var(--hero-soft); max-width: 42rem; font-weight: 600; }
+      .cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.75rem 0 0; }
+      .btn {
+        display: inline-block;
+        padding: 0.85rem 1.6rem;
+        font-weight: 700;
+        font-size: 1.05rem;
+        text-decoration: none;
+        border-radius: 8px;
+        border: 2px solid var(--hero-accent);
+      }
+      .btn-primary { background: var(--hero-accent); color: #1d1400; border-color: var(--hero-accent); }
+      .btn-primary:hover { background: #ffc766; border-color: #ffc766; color: #1d1400; }
+      .btn-secondary { background: transparent; color: var(--hero-ink); border-color: var(--hero-ink); }
+      .btn-secondary:hover { background: rgba(255, 255, 255, 0.12); color: var(--hero-ink); border-color: var(--hero-ink); }
+
+      .cred-strip {
+        background: var(--bg-alt);
+        border-bottom: 1px solid var(--line);
+        padding: 2rem 0 2.25rem;
+      }
+      .cred-strip h2 {
+        font-size: 1.15rem;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+      }
+      .cred-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      @media (min-width: 40rem) { .cred-list { grid-template-columns: 1fr 1fr; } }
+      @media (min-width: 64rem) { .cred-list { grid-template-columns: repeat(4, 1fr); } }
+      .cred-list li {
+        margin: 0;
+        font-weight: 700;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-top: 4px solid var(--accent);
+        border-radius: 10px;
+        padding: 1rem 1.1rem;
+        box-shadow: var(--card-shadow);
+      }
+      .cred-list .cred-note { display: block; font-weight: 400; color: var(--ink-soft); font-size: 0.95rem; margin-top: 0.25rem; }
+
+      /* Sections */
+      section.block { padding: 3.25rem 0; border-bottom: 1px solid var(--line); }
+      section.block:last-of-type { border-bottom: none; }
+      @media (min-width: 48rem) { section.block { padding: 3.75rem 0; } }
+      .section-intro { max-width: 44rem; color: var(--ink-soft); font-size: 1.12rem; }
+
+      /* About gets a soft tinted panel behind its opening line */
+      #about .section-intro {
+        background: var(--bg-alt);
+        border-radius: 12px;
+        padding: 1.4rem 1.6rem;
+        color: var(--ink);
+        font-size: 1.18rem;
+        line-height: 1.6;
+      }
+
+      /* Services — individual cards */
+      .services { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; }
+      @media (min-width: 52rem) { .services { grid-template-columns: 1fr 1fr; } }
+      .service {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-top: 5px solid var(--accent);
+        border-radius: 12px;
+        padding: 1.6rem 1.6rem 1.4rem;
+        box-shadow: var(--card-shadow);
+      }
+      .service p { color: var(--ink-soft); }
+      .service ul { color: var(--ink); margin-bottom: 0; }
+      .service li::marker { color: var(--ochre); }
+      .service h3 { margin-bottom: 0.6rem; }
+
+      /* Experience */
+      .roles { list-style: none; margin: 2rem 0 0; padding: 0; }
+      .roles > li {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.25rem 2.5rem;
+        padding: 1.5rem 0;
+        border-top: 1px solid var(--line);
+        margin: 0;
+      }
+      @media (min-width: 52rem) {
+        .roles > li { grid-template-columns: 13rem 1fr; }
+      }
+      .role-when { font-weight: 700; color: var(--ochre); }
+      @media (prefers-color-scheme: light) { .role-when { color: #7a4d00; } }
+      .roles h3 { margin-bottom: 0.15rem; }
+      .role-org { font-weight: 600; color: var(--ink-soft); margin-bottom: 0.5rem; }
+      .roles p { color: var(--ink-soft); max-width: 40rem; }
+
+      /* Projects */
+      .projects { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; }
+      @media (min-width: 52rem) { .projects { grid-template-columns: repeat(3, 1fr); } }
+      .project {
+        background: var(--bg-alt);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 1.6rem;
+        box-shadow: var(--card-shadow);
+      }
+      .project h3 { padding-bottom: 0.6rem; border-bottom: 3px solid var(--ochre-bright); }
+      .project p { color: var(--ink-soft); }
+      .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1rem 0 0; padding: 0; }
+      .tags li {
+        background: var(--tag-bg);
+        color: var(--tag-ink);
+        font-size: 0.875rem;
+        font-weight: 600;
+        padding: 0.2rem 0.6rem;
+        border-radius: 999px;
+        margin: 0;
+      }
+
+      /* Two-column facts */
+      .facts { display: grid; grid-template-columns: 1fr; gap: 2.5rem; margin-top: 2rem; }
+      @media (min-width: 52rem) { .facts { grid-template-columns: 1fr 1fr; } }
+      .facts h3 { border-bottom: 3px solid var(--ochre); padding-bottom: 0.5rem; margin-bottom: 1rem; }
+      .facts ul { list-style: none; padding: 0; }
+      .facts li { padding: 0.4rem 0; border-bottom: 1px solid var(--line); margin: 0; }
+      .facts li:last-child { border-bottom: none; }
+      .fact-note { display: block; color: var(--ink-soft); font-size: 0.95rem; }
+
+      /* Process */
+      .steps { list-style: none; counter-reset: step; margin: 2rem 0 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: 2rem; }
+      @media (min-width: 52rem) { .steps { grid-template-columns: 1fr 1fr; } }
+      @media (min-width: 72rem) { .steps { grid-template-columns: repeat(4, 1fr); } }
+      .steps li {
+        margin: 0;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: var(--card-shadow);
+      }
+      .step-num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.6rem; height: 2.6rem;
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--accent-ink);
+        font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+        font-weight: 700;
+        font-size: 1.3rem;
+        margin-bottom: 0.85rem;
+        box-shadow: 0 0 0 5px var(--bg-alt);
+      }
+      .steps h3 { font-size: 1.15rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+      .steps p { color: var(--ink-soft); margin-bottom: 0; }
+
+      /* Reach out — numbered invitation cards */
+      .reach-list {
+        list-style: none;
+        counter-reset: reach;
+        margin: 2rem 0 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        max-width: 62rem;
+      }
+      @media (min-width: 52rem) { .reach-list { grid-template-columns: repeat(3, 1fr); } }
+      .reach-list li {
+        counter-increment: reach;
+        margin: 0;
+        background: var(--bg-alt);
+        border-radius: 12px;
+        padding: 1.5rem;
+        font-size: 1.05rem;
+        line-height: 1.55;
+      }
+      .reach-list li::before {
+        content: counter(reach, decimal-leading-zero);
+        display: block;
+        font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--ochre);
+        margin-bottom: 0.7rem;
+      }
+
+      /* Contact — deep teal panel, mirroring the hero */
+      .contact-box {
+        background-color: var(--hero-bg);
+        background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1.5px, transparent 1.6px);
+        background-size: 26px 26px;
+        color: var(--hero-ink);
+        border-radius: 14px;
+        padding: 2rem;
+        margin-top: 1.5rem;
+      }
+      @media (min-width: 48rem) { .contact-box { padding: 2.75rem; } }
+      .contact-box p { max-width: 42rem; color: var(--hero-ink); }
+      .contact-box a { color: var(--hero-accent); }
+      .contact-box a:hover { color: #ffc766; }
+      .contact-box .linkedin-link { color: var(--hero-ink); }
+      .placeholder-note {
+        border: 2px dashed var(--ochre);
+        border-radius: 6px;
+        padding: 1rem 1.25rem;
+        font-weight: 600;
+        max-width: 42rem;
+      }
+      .linkedin-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-weight: 600;
+      }
+      .linkedin-icon {
+        width: 1.75rem;
+        height: 1.75rem;
+        flex-shrink: 0;
+        display: block;
+      }
+
+      /* Blog — index list and full post views */
+      [hidden] { display: none !important; }
+      .blog-index, .post-full { padding: 3rem 0 4rem; max-width: 46rem; }
+      @media (min-width: 48rem) { .blog-index, .post-full { padding: 3.75rem 0 4.5rem; } }
+      .blog-index h1, .post-full h1 { font-size: clamp(2.2rem, 5.5vw, 3.4rem); }
+      .blog-index h1::after, .post-full h1::after {
+        content: "";
+        display: block;
+        width: 4.5rem;
+        height: 0.32rem;
+        border-radius: 999px;
+        background: var(--ochre-bright);
+        margin-top: 1rem;
+      }
+      .blog-index h1:focus, .post-full h1:focus { outline: none; }
+      .blog-index h1:focus-visible, .post-full h1:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+      .back-link { font-weight: 600; margin-bottom: 1.75rem; }
+      .back-link.bottom { margin: 2.5rem 0 0; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+      .post-list { list-style: none; margin: 2rem 0 0; padding: 0; }
+      .post-list > li { margin: 0; }
+      .post-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-top: 5px solid var(--accent);
+        border-radius: 12px;
+        padding: 1.75rem;
+        box-shadow: var(--card-shadow);
+      }
+      .post-card h2 { font-size: clamp(1.5rem, 3vw, 1.9rem); }
+      .post-card h2 a { color: var(--ink); text-decoration: none; }
+      .post-card h2 a:hover { color: var(--accent); text-decoration: underline; }
+      .post-excerpt { color: var(--ink-soft); font-size: 1.1rem; }
+      .read-more { font-weight: 700; font-size: 1.05rem; }
+      .post-byline { font-weight: 600; color: var(--ink-soft); margin-bottom: 1.75rem; }
+      .post-full p { font-size: 1.1rem; }
+      .post-full h2 {
+        font-size: clamp(1.55rem, 3.2vw, 2rem);
+        margin-top: 2.75rem;
+      }
+      .post-full h2::before {
+        content: "";
+        display: block;
+        width: 3rem;
+        height: 0.3rem;
+        border-radius: 999px;
+        background: var(--ochre-bright);
+        margin-bottom: 0.85rem;
+      }
+      .post-steps { padding-left: 1.5rem; }
+      .post-steps li { margin-bottom: 0.9rem; font-size: 1.1rem; }
+      .post-steps li::marker { color: var(--ochre); font-weight: 700; }
+      .ai-disclosure {
+        border-top: 1px solid var(--line);
+        padding-top: 1.25rem;
+        margin-top: 2rem;
+        color: var(--ink-soft);
+      }
+
+      footer {
+        border-top: 4px solid var(--ochre-bright);
+        background: var(--bg-alt);
+        padding: 2rem 0 2.5rem;
+        color: var(--ink-soft);
+      }
+      footer p { margin-bottom: 0.4rem; }
+      footer .foot-name { color: var(--ink); font-weight: 700; }
+
+      @media print {
+        .site-header, .cta-row, .skip-link { display: none; }
+        body { font-size: 11pt; }
+        section.block, .hero { padding: 1.2rem 0; }
+        a { color: var(--ink); }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="site-name" href="#top">Desmond Delgadillo</a>
+        <nav class="primary" aria-label="Portfolio sections">
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#credentials">Credentials</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Work with me</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <div id="view-home">
+      <div class="hero-band" id="top">
+        <div class="wrap">
+        <div class="hero">
+          <h1>Desmond Delgadillo</h1>
+          <p class="hero-role">Assistive Technology Trainer &amp; AT Graduate Student</p>
+          <p class="hero-lede">
+            I train people who use assistive technology every day. I teach people everything
+            from the basics — JAWS, NVDA, and VoiceOver — all the way to using complex software
+            with a screen reader, like Asana and CilSuite. I also do hands-on testing with the
+            screen readers people actually use — JAWS and NVDA on Windows, iOS VoiceOver on
+            iPhone, and TalkBack on Android.
+          </p>
+          <p class="hero-meta">
+            I work in English and Spanish.
+          </p>
+          <p class="cta-row">
+            <a class="btn btn-primary" href="#contact">Work with me</a>
+            <a class="btn btn-secondary" href="#services">See my services</a>
+          </p>
+        </div>
+        </div>
+      </div>
+
+      <div class="cred-strip">
+        <div class="wrap">
+          <h2 id="cred-strip-heading">Credentials at a glance</h2>
+          <ul class="cred-list" aria-labelledby="cred-strip-heading">
+            <li>Certified JAWS Expert</li>
+            <li>Certified NVDA Expert</li>
+            <li>Google Trusted Tester</li>
+            <li>RESNA ATP — in progress<span class="cred-note">Assistive Technology Professional credential</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="wrap">
+
+        <section class="block" id="about" aria-labelledby="about-heading">
+          <h2 id="about-heading">About</h2>
+          <p class="section-intro">
+            Accessibility is my profession from both sides of the screen: I audit digital products
+            against accessibility standards, and I teach blind and low-vision adults to use the
+            technology those standards are meant to serve.
+          </p>
+          <p style="max-width:44rem;">
+            As a web accessibility freelancer, I conduct WCAG and Section 508 compliance audits
+            for corporate and non-profit clients. Independently, I consult and train: testing with the screen
+            readers I use daily, writing remediation guidance developers can act on, and building
+            coursework that blind students can actually use.
+          </p>
+          <p style="max-width:44rem;">
+            My background in communications, my graduate study in assistive technology, and my own
+            experience as a screen-reader user shape how I work: findings are specific, prioritized,
+            and explained in plain language, and training starts from what the learner needs to do —
+            not from a feature tour.
+          </p>
+        </section>
+
+        <section class="block" id="services" aria-labelledby="services-heading">
+          <h2 id="services-heading">Services</h2>
+          <p class="section-intro">
+            Consulting and training for organizations that publish digital content, and for the
+            people and teams who rely on assistive technology at work and in the classroom.
+          </p>
+
+          <div class="services">
+            <article class="service">
+              <h3>Assistive technology training</h3>
+              <p>
+                One-to-one and team training in JAWS, NVDA, and iOS VoiceOver, tailored to the
+                learner's job, coursework, or daily tasks.
+              </p>
+              <ul>
+                <li>Individual training plans built around real tasks</li>
+                <li>Team sessions for instructors and support staff</li>
+                <li>Training available in English and Spanish</li>
+              </ul>
+            </article>
+
+            <article class="service">
+              <h3>Accessible coursework &amp; instructional materials</h3>
+              <p>
+                Coursework and learning materials designed to be usable with assistive technology
+                from the start — including Microsoft Excel taught for JAWS and NVDA users.
+              </p>
+              <ul>
+                <li>Step-by-step materials written for screen-reader workflows</li>
+                <li>Exact keystrokes and navigation strategies, not screenshots</li>
+                <li>Materials reviewed for heading structure, reading order, and clarity</li>
+              </ul>
+            </article>
+
+            <article class="service">
+              <h3>Workplace AT &amp; workflow automation</h3>
+              <p>
+                Practical help getting assistive technology working inside real office workflows —
+                scheduling, billing, records, and reporting — including automation that removes
+                repetitive, error-prone manual steps.
+              </p>
+              <ul>
+                <li>Assistive technology setup within existing workplace tools</li>
+                <li>Python automation for spreadsheets, billing, and reports</li>
+                <li>Process documentation staff can follow independently</li>
+              </ul>
+            </article>
+
+            <article class="service">
+              <h3>WCAG &amp; Section 508 accessibility audits</h3>
+              <p>
+                Structured evaluations of websites, web applications, and documents against WCAG
+                and Section 508 requirements, for corporate and non-profit clients.
+              </p>
+              <ul>
+                <li>Criterion-by-criterion findings, not automated-scan summaries</li>
+                <li>Issues prioritized by impact on users</li>
+                <li>Clear remediation guidance your team can implement and re-test</li>
+              </ul>
+            </article>
+
+            <article class="service">
+              <h3>Screen-reader testing &amp; remediation guidance</h3>
+              <p>
+                Hands-on testing with the screen readers your users actually run — JAWS and NVDA
+                on Windows, VoiceOver on iOS, and TalkBack on Android — as a daily screen-reader
+                user, not a simulation.
+              </p>
+              <ul>
+                <li>Full task walkthroughs: forms, navigation, tables, dialogs</li>
+                <li>Keyboard-only and screen-reader pass on critical user journeys</li>
+                <li>Specific fixes tied to the failing interaction</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="block" id="projects" aria-labelledby="projects-heading">
+          <h2 id="projects-heading">Selected projects</h2>
+          <p class="section-intro">
+            Work that shows how I combine accessibility expertise with practical operations and
+            instructional design.
+          </p>
+
+          <div class="projects">
+            <article class="project">
+              <h3>Operations automation utilities</h3>
+              <p>
+                Python utilities that automate recurring program administration at Wayfinder:
+                attendance spreadsheets, billing-unit calculations, and student monthly progress
+                reports — replacing manual spreadsheet and document work with repeatable scripts.
+              </p>
+              <ul class="tags" aria-label="Technologies used">
+                <li>Python</li>
+                <li>pandas</li>
+                <li>openpyxl</li>
+                <li>python-docx</li>
+                <li>win32com</li>
+              </ul>
+            </article>
+
+            <article class="project">
+              <h3>Accessible Excel coursework</h3>
+              <p>
+                Excel curriculum written for blind adult students learning with JAWS and NVDA.
+                Every procedure is described as keystrokes and concepts a screen-reader user can
+                follow independently, rather than mouse-and-screenshot instructions.
+              </p>
+              <ul class="tags" aria-label="Topics covered">
+                <li>Microsoft Excel</li>
+                <li>JAWS</li>
+                <li>NVDA</li>
+                <li>Instructional design</li>
+              </ul>
+            </article>
+
+            <article class="project">
+              <h3>Graduate research in assistive technology</h3>
+              <p>
+                Graduate research at CSUN on assistive technology legislation, disability
+                workforce policy, and indoor navigation — including evaluation of wayfinding
+                tools such as GoodMaps and NaviLens for blind travelers.
+              </p>
+              <ul class="tags" aria-label="Research areas">
+                <li>AT legislation</li>
+                <li>Workforce policy</li>
+                <li>GoodMaps</li>
+                <li>NaviLens</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="block" id="credentials" aria-labelledby="credentials-heading">
+          <h2 id="credentials-heading">Credentials &amp; education</h2>
+
+          <div class="facts">
+            <div>
+              <h3>Certifications</h3>
+              <ul>
+                <li><strong>Certified JAWS Expert</strong></li>
+                <li><strong>Certified NVDA Expert</strong></li>
+                <li><strong>Google Trusted Tester</strong></li>
+                <li><strong>RESNA ATP — in progress</strong><span class="fact-note">Assistive Technology Professional credential, Rehabilitation Engineering and Assistive Technology Society of North America</span></li>
+              </ul>
+            </div>
+            <div>
+              <h3>Education</h3>
+              <ul>
+                <li><strong>MA, Assistive Technology Studies and Human Services</strong><span class="fact-note">California State University, Northridge (CSUN) — in progress</span></li>
+                <li><strong>BA, Communications</strong><span class="fact-note">University of La Verne</span></li>
+              </ul>
+              <h3 style="margin-top:2rem;">Daily tools</h3>
+              <ul>
+                <li>JAWS and NVDA on Windows</li>
+                <li>VoiceOver on iOS and macOS</li>
+                <li>Microsoft 365 — Excel, Word, Outlook</li>
+                <li>Python for workflow automation</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="process" aria-labelledby="process-heading">
+          <h2 id="process-heading">How an engagement works</h2>
+          <p class="section-intro">A straightforward process, whether the work is an audit, a training plan, or both.</p>
+
+          <ol class="steps">
+            <li>
+              <span class="step-num" aria-hidden="true">1</span>
+              <h3>Conversation</h3>
+              <p>We talk through your product, audience, deadlines, and any compliance driver — Section 508, WCAG, or your own accessibility goals.</p>
+            </li>
+            <li>
+              <span class="step-num" aria-hidden="true">2</span>
+              <h3>Evaluation or training plan</h3>
+              <p>For audits, I test with real assistive technology. For training, I assess the learner's current skills and the tasks they need to perform.</p>
+            </li>
+            <li>
+              <span class="step-num" aria-hidden="true">3</span>
+              <h3>Findings you can act on</h3>
+              <p>You get prioritized findings with specific remediation guidance — or a training plan with concrete next steps — in plain language.</p>
+            </li>
+            <li>
+              <span class="step-num" aria-hidden="true">4</span>
+              <h3>Follow-through</h3>
+              <p>Re-testing after fixes, answers for your developers as they remediate, and continued sessions for trainees building new skills.</p>
+            </li>
+          </ol>
+        </section>
+
+        <section class="block" id="reach-out" aria-labelledby="reach-out-heading">
+          <h2 id="reach-out-heading">You should reach out to me if…</h2>
+          <ul class="reach-list">
+            <li>You're a developer with a new app and you're wondering if it is accessible with VoiceOver, TalkBack, or any of the leading screen readers.</li>
+            <li>You are ready to take back your digital independence and build real confidence with assistive technology in your everyday work and life.</li>
+            <li>You teach or support blind and low-vision students or staff and want training or course materials that work with assistive technology from the start.</li>
+          </ul>
+        </section>
+
+        <section class="block" id="contact" aria-labelledby="contact-heading">
+          <h2 id="contact-heading">Work with me</h2>
+          <div class="contact-box">
+            <p>
+              If you need an accessibility audit, screen-reader testing, or assistive technology
+              training for yourself or your team, I'd like to hear about the project. The most
+              useful first message covers:
+            </p>
+            <ul>
+              <li>What you need — an audit, training, accessible materials, or a mix</li>
+              <li>The product, site, or tools involved, and the assistive technology in use</li>
+              <li>Your timeline and any compliance deadline driving the work</li>
+            </ul>
+            <p>
+              Email me at <a href="mailto:desdelgadillo@gmail.com">desdelgadillo@gmail.com</a>
+            </p>
+            <p>
+              <a class="linkedin-link" href="https://www.linkedin.com/in/desdelgadillo/" target="_blank" rel="noopener noreferrer" aria-label="Desmond Delgadillo on LinkedIn (opens in a new tab)">
+                <svg class="linkedin-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><path fill="#0a66c2" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+                <span>LinkedIn</span>
+              </a>
+            </p>
+          </div>
+        </section>
+
+      </div>
+      </div><!-- /view-home -->
+
+      <div id="view-blog" hidden>
+        <div class="wrap">
+          <div class="blog-index">
+            <p class="back-link"><a href="#top">&larr; Back to home</a></p>
+            <h1 id="blog-heading" tabindex="-1">Blog</h1>
+            <p class="section-intro">
+              Writing on assistive technology, accessibility, and the tools I use every day.
+            </p>
+
+            <ul class="post-list">
+              <li>
+                <article class="post-card">
+                  <h2><a href="#siri-the-call-transcript-and-the-contact-i-never-typed">Siri, the Call Transcript, and the Contact I Never Typed</a></h2>
+                  <p class="post-excerpt">Something pretty cool happened tonight. I needed to reschedule a medical appointment. Don't worry; that wasn't the cool part.</p>
+                  <p><a class="read-more" href="#siri-the-call-transcript-and-the-contact-i-never-typed" aria-label="Read more: Siri, the Call Transcript, and the Contact I Never Typed">Read more <span aria-hidden="true">&rarr;</span></a></p>
+                </article>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div><!-- /view-blog -->
+
+      <article id="view-post" hidden aria-labelledby="post-heading">
+        <div class="wrap">
+          <div class="post-full">
+            <p class="back-link"><a href="#blog">&larr; Back to blog</a></p>
+            <h1 id="post-heading" tabindex="-1">Siri, the Call Transcript, and the Contact I Never Typed</h1>
+            <p class="post-byline">By Desmond Delgadillo</p>
+
+            <p>Something pretty cool happened tonight. I needed to reschedule a medical appointment. Don't worry; that wasn't the cool part.</p>
+
+            <p>I called the medical office and learned that the department I needed was closed for the evening. The representative who was helping me offered to give me the direct line so I could call back tomorrow. This sounded ideal because I had to wade through no less than seven menus before I got connected to this rep. It did not sound ideal because I had nothing to write with.</p>
+
+            <p>It was at this point, dear reader, that my inner-nerd activated.</p>
+
+            <p>"Would you mind if I record the call so I can capture the number?" I asked, ready for the sting of rejection or even to be hung up on. It's happened.</p>
+
+            <p>Instead, I got a hesitant yes. "I'll take it!" I thought.</p>
+
+            <p>I turned on the built-in call recording in the iOS Phone app and had him repeat the number and the hours. When the call ended, I didn't open Contacts. I didn't hunt for an "add number" button or try to type digits I half-heard into the right fields. I asked Siri to look at my most recent call transcript and save the new number as a contact.</p>
+
+            <p>And do you know what happened?</p>
+
+            <p>It did it!</p>
+
+            <p>No "I'm sorry, I didn't get that."</p>
+
+            <p>No half-baked attempts.</p>
+
+            <p>One minute I didn't have my doctor's phone number, and the next minute, I did, and it happened with a microscopic amount of effort, the kind of effort that deserves to be studied in a lab.</p>
+
+            <p>It's my job to take apart cool technology and find ways it can help people. So you can trust me when I tell you that this is a feature worth teaching your grandparents at Thanksgiving.</p>
+
+            <p>To unpack this as an assistive technology feature, let's think about a blind user's typical version of my original task. Someone reads you a phone number once, at their pace. You either memorize it, fumble for a note-taking app mid-call and miss the first four numbers, or ask them to repeat it, ideally as slowly as possible because despite owning a smartphone since junior high you have never been able to type any faster. Suddenly you are Jason Statham and the fate of your mission is depending on you and your ability to do data entry. Instead, I was able to put two parts of the Apple ecosystem together and get the information I needed it where I needed it.</p>
+
+            <p>That is what good accessibility actually looks like. Not a special "Accessibility mode." Not a separate, lesser app. Just a strategic chain of mainstream features that make life easier.</p>
+
+            <p>Of course, this only works because the pieces live in one ecosystem; hand any link in that chain to a third-party app and the magic usually dies.</p>
+
+            <p>But tonight, the chain held.</p>
+
+            <p>The best assistive technology is the kind you stop noticing. Tonight, I noticed.</p>
+
+            <h2>How to try this yourself</h2>
+
+            <p>You need an iPhone running a current version of iOS with Apple Intelligence available, since the transcript step runs on that. Everything below uses built-in apps &mdash; no downloads.</p>
+
+            <ol class="post-steps">
+              <li><strong>Make your call as normal</strong> from the Phone app. You can start recording before the key moment or partway through, when you realize the information matters.</li>
+              <li><strong>Turn on call recording.</strong> While the call is in progress, tap the call recording button on the call screen (with VoiceOver, it is announced as the call recording button in the in-call controls). Everyone on the call hears an announcement that the call is being recorded &mdash; that is built in, and it is not a substitute for asking permission yourself. Ask, the way I did, before you rely on it.</li>
+              <li><strong>Ask for the information to be repeated slowly and clearly.</strong> Names spelled out and numbers read in groups make a dramatically better transcript than the same information spoken once at speed.</li>
+              <li><strong>End the call and give it a moment.</strong> The recording is saved and transcribed automatically; the transcript appears with the call in your Phone app's Recents, and the audio is kept in the Notes app.</li>
+              <li><strong>Check the transcript before you trust it.</strong> Open the call in Recents and read through the text with VoiceOver. Pay special attention to the digits of the phone number &mdash; one wrong number makes the contact useless. Fix anything that looks wrong by editing the contact after step 6.</li>
+              <li><strong>Ask Siri to make the contact.</strong> Use plain language, for example: "Siri, look at my most recent call transcript and add [name] as a contact." Siri pulls the name and number from the transcript and creates the contact.</li>
+              <li><strong>Verify the contact.</strong> Ask Siri to read the contact back to you, or open it in Contacts and review each field &mdash; name, number, and any hours or notes you asked to include.</li>
+            </ol>
+
+            <p>Two practical notes. Call recording availability and consent laws vary by place; when in doubt, ask the other person, exactly as you would want them to ask you. And if Siri cannot find the transcript, check that the recording actually finished transcribing &mdash; on a long call it can take a minute or two after you hang up.</p>
+
+            <p class="ai-disclosure">AI Disclosure: I used AI to help write the steps for this process. Because yeah&hellip; No&hellip;</p>
+
+            <p class="back-link bottom"><a href="#blog">&larr; Back to blog</a></p>
+          </div>
+        </div>
+      </article><!-- /view-post -->
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <p class="foot-name">Desmond Delgadillo</p>
+        <p>Accessibility Consultant &amp; Assistive Technology Trainer — Pico Rivera / Los Angeles area, California. English and Spanish.</p>
+        <p><a href="#top">Back to top</a></p>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var postHash = "#siri-the-call-transcript-and-the-contact-i-never-typed";
+        var views = {
+          home: document.getElementById("view-home"),
+          blog: document.getElementById("view-blog"),
+          post: document.getElementById("view-post")
+        };
+        var headings = {
+          blog: document.getElementById("blog-heading"),
+          post: document.getElementById("post-heading")
+        };
+        var current = "home";
+
+        function viewForHash(hash) {
+          if (hash === "#blog") return "blog";
+          if (hash === postHash) return "post";
+          return "home";
+        }
+
+        function route() {
+          var hash = window.location.hash || "";
+          var next = viewForHash(hash);
+          var changed = next !== current;
+          views.home.hidden = next !== "home";
+          views.blog.hidden = next !== "blog";
+          views.post.hidden = next !== "post";
+          current = next;
+
+          if (next === "home") {
+            if (hash && hash !== "#top") {
+              var target = document.getElementById(hash.slice(1));
+              if (target) target.scrollIntoView();
+            } else if (changed) {
+              window.scrollTo(0, 0);
+            }
+          } else {
+            window.scrollTo(0, 0);
+            if (changed && headings[next]) headings[next].focus({ preventScroll: true });
+          }
+        }
+
+        window.addEventListener("hashchange", route);
+        route();
+      })();
+    </script>
+  </body>
+</html>

@@ -429,12 +429,12 @@
         display: block;
       }
 
-      /* Blog — index list and full post views */
+      /* Blog & Resources — index list and full post views */
       [hidden] { display: none !important; }
-      .blog-index, .post-full { padding: 3rem 0 4rem; max-width: 46rem; }
-      @media (min-width: 48rem) { .blog-index, .post-full { padding: 3.75rem 0 4.5rem; } }
-      .blog-index h1, .post-full h1 { font-size: clamp(2.2rem, 5.5vw, 3.4rem); }
-      .blog-index h1::after, .post-full h1::after {
+      .blog-index, .post-full, .resources-index { padding: 3rem 0 4rem; max-width: 46rem; }
+      @media (min-width: 48rem) { .blog-index, .post-full, .resources-index { padding: 3.75rem 0 4.5rem; } }
+      .blog-index h1, .post-full h1, .resources-index h1 { font-size: clamp(2.2rem, 5.5vw, 3.4rem); }
+      .blog-index h1::after, .post-full h1::after, .resources-index h1::after {
         content: "";
         display: block;
         width: 4.5rem;
@@ -443,8 +443,25 @@
         background: var(--ochre-bright);
         margin-top: 1rem;
       }
-      .blog-index h1:focus, .post-full h1:focus { outline: none; }
-      .blog-index h1:focus-visible, .post-full h1:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+      .blog-index h1:focus, .post-full h1:focus, .resources-index h1:focus { outline: none; }
+      .blog-index h1:focus-visible, .post-full h1:focus-visible, .resources-index h1:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+      .resource-list { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; gap: 1.5rem; }
+      .resource-list > li { margin: 0; }
+      .resource-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-top: 5px solid var(--accent);
+        border-radius: 12px;
+        padding: 1.75rem;
+        box-shadow: var(--card-shadow);
+      }
+      .resource-card h2 { font-size: clamp(1.5rem, 3vw, 1.9rem); }
+      .resource-card h2 a { color: var(--ink); text-decoration: none; }
+      .resource-card h2 a:hover { color: var(--accent); text-decoration: underline; }
+      .resource-meta { font-weight: 600; color: var(--ink-soft); margin-bottom: 0.75rem; }
+      .resource-desc { color: var(--ink-soft); font-size: 1.1rem; }
+      .resource-actions { display: flex; flex-wrap: wrap; gap: 0.75rem 1.5rem; margin-top: 1.25rem; }
+      .resource-actions a { font-weight: 700; }
       .back-link { font-weight: 600; margin-bottom: 1.75rem; }
       .back-link.bottom { margin: 2.5rem 0 0; padding-top: 1.5rem; border-top: 1px solid var(--line); }
       .post-list { list-style: none; margin: 2rem 0 0; padding: 0; }
@@ -533,6 +550,7 @@
           <ul>
             <li><a href="#services">Services</a></li>
             <li><a href="#credentials">Credentials</a></li>
+            <li><a href="#resources">Resources</a></li>
             <li><a href="#blog">Blog</a></li>
             <li><a href="#contact">Work with me</a></li>
           </ul>
@@ -783,6 +801,49 @@
         </div>
       </div><!-- /view-blog -->
 
+      <div id="view-resources" hidden>
+        <div class="wrap">
+          <div class="resources-index">
+            <p class="back-link"><a href="#top">&larr; Back to home</a></p>
+            <h1 id="resources-heading" tabindex="-1">Resources</h1>
+            <p class="section-intro">
+              Tools and materials I have built to share — starting with a fully accessible,
+              self-voicing typing tutor for blind Spanish speakers learning to type English.
+              More resources will be added here over time.
+            </p>
+
+            <ul class="resource-list">
+              <li>
+                <article class="resource-card">
+                  <p class="resource-meta">Typing tutor &middot; Fully accessible &middot; Free, runs in your browser</p>
+                  <h2><a href="https://desdelgadillo.github.io/Spanish-Typing-Tutor/" target="_blank" rel="noopener noreferrer">Spanish Typing Tutor</a></h2>
+                  <p class="resource-desc">
+                    A fully accessible, self-voicing typing tutor designed for blind Spanish
+                    speakers learning to type English, with all instruction and feedback
+                    spoken in Spanish via the browser&rsquo;s built-in speech synthesis.
+                  </p>
+                  <p class="resource-desc">
+                    Three progressive levels — Beginner, Intermediate, and Advanced —
+                    starting with home-row lessons, plus capital-letter lessons that require
+                    the correct Shift key. Real-time statistics track correct, incorrect, and
+                    accuracy as you type, and the tutor is screen-reader compatible with
+                    ARIA labels and live regions.
+                  </p>
+                  <p class="resource-desc">
+                    Runs entirely in the browser with no installation, and works offline
+                    once loaded.
+                  </p>
+                  <p class="resource-actions">
+                    <a href="https://desdelgadillo.github.io/Spanish-Typing-Tutor/" target="_blank" rel="noopener noreferrer">Open the Spanish Typing Tutor <span aria-hidden="true">&rarr;</span></a>
+                    <a href="https://github.com/desdelgadillo/Spanish-Typing-Tutor" target="_blank" rel="noopener noreferrer">View the source on GitHub</a>
+                  </p>
+                </article>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div><!-- /view-resources -->
+
       <article id="view-post" hidden aria-labelledby="post-heading">
         <div class="wrap">
           <div class="post-full">
@@ -866,16 +927,19 @@
         var views = {
           home: document.getElementById("view-home"),
           blog: document.getElementById("view-blog"),
+          resources: document.getElementById("view-resources"),
           post: document.getElementById("view-post")
         };
         var headings = {
           blog: document.getElementById("blog-heading"),
+          resources: document.getElementById("resources-heading"),
           post: document.getElementById("post-heading")
         };
         var current = "home";
 
         function viewForHash(hash) {
           if (hash === "#blog") return "blog";
+          if (hash === "#resources") return "resources";
           if (hash === postHash) return "post";
           return "home";
         }
@@ -886,6 +950,7 @@
           var changed = next !== current;
           views.home.hidden = next !== "home";
           views.blog.hidden = next !== "blog";
+          views.resources.hidden = next !== "resources";
           views.post.hidden = next !== "post";
           current = next;
 

@@ -289,29 +289,6 @@
       .role-org { font-weight: 600; color: var(--ink-soft); margin-bottom: 0.5rem; }
       .roles p { color: var(--ink-soft); max-width: 40rem; }
 
-      /* Projects */
-      .projects { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; }
-      @media (min-width: 52rem) { .projects { grid-template-columns: repeat(3, 1fr); } }
-      .project {
-        background: var(--bg-alt);
-        border: 1px solid var(--line);
-        border-radius: 12px;
-        padding: 1.6rem;
-        box-shadow: var(--card-shadow);
-      }
-      .project h3 { padding-bottom: 0.6rem; border-bottom: 3px solid var(--ochre-bright); }
-      .project p { color: var(--ink-soft); }
-      .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1rem 0 0; padding: 0; }
-      .tags li {
-        background: var(--tag-bg);
-        color: var(--tag-ink);
-        font-size: 0.875rem;
-        font-weight: 600;
-        padding: 0.2rem 0.6rem;
-        border-radius: 999px;
-        margin: 0;
-      }
-
       /* Two-column facts */
       .facts { display: grid; grid-template-columns: 1fr; gap: 2.5rem; margin-top: 2rem; }
       @media (min-width: 52rem) { .facts { grid-template-columns: 1fr 1fr; } }
@@ -501,7 +478,6 @@
         <nav class="primary" aria-label="Portfolio sections">
           <ul>
             <li><a href="#services">Services</a></li>
-            <li><a href="#projects">Projects</a></li>
             <li><a href="#credentials">Credentials</a></li>
             <li><a href="#blog">Blog</a></li>
             <li><a href="#contact">Work with me</a></li>
@@ -620,62 +596,6 @@
                 <li>Assistive technology setup within existing workplace tools</li>
                 <li>Python automation for spreadsheets, billing, and reports</li>
                 <li>Process documentation staff can follow independently</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <section class="block" id="projects" aria-labelledby="projects-heading">
-          <h2 id="projects-heading">Selected projects</h2>
-          <p class="section-intro">
-            Work that grows out of training learners and running real programs day to day —
-            practical operations, instructional design, and assistive technology in use.
-          </p>
-
-          <div class="projects">
-            <article class="project">
-              <h3>Operations automation utilities</h3>
-              <p>
-                Python utilities that automate recurring program administration at Wayfinder:
-                attendance spreadsheets, billing-unit calculations, and student monthly progress
-                reports — replacing manual spreadsheet and document work with repeatable scripts.
-              </p>
-              <ul class="tags" aria-label="Technologies used">
-                <li>Python</li>
-                <li>pandas</li>
-                <li>openpyxl</li>
-                <li>python-docx</li>
-                <li>win32com</li>
-              </ul>
-            </article>
-
-            <article class="project">
-              <h3>Accessible Excel coursework</h3>
-              <p>
-                Excel curriculum written for blind adult students learning with JAWS and NVDA.
-                Every procedure is described as keystrokes and concepts a screen-reader user can
-                follow independently, rather than mouse-and-screenshot instructions.
-              </p>
-              <ul class="tags" aria-label="Topics covered">
-                <li>Microsoft Excel</li>
-                <li>JAWS</li>
-                <li>NVDA</li>
-                <li>Instructional design</li>
-              </ul>
-            </article>
-
-            <article class="project">
-              <h3>Graduate research in assistive technology</h3>
-              <p>
-                Graduate research at CSUN on assistive technology legislation, disability
-                workforce policy, and indoor navigation — including evaluation of wayfinding
-                tools such as GoodMaps and NaviLens for blind travelers.
-              </p>
-              <ul class="tags" aria-label="Research areas">
-                <li>AT legislation</li>
-                <li>Workforce policy</li>
-                <li>GoodMaps</li>
-                <li>NaviLens</li>
               </ul>
             </article>
           </div>
